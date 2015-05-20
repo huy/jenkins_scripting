@@ -2,7 +2,7 @@
 
 At Wonga we have complex continous integration (CI) systems which we use to build, propogate and release code to our testing and production environments. We employ Jenkins to build SOAP components and run different test suites as part of this CI process. Wonga devops team follows infrastructure as code paradigm, which literally means write code to automate instrastructure tasks. As such we want to write code to create Jenkins jobs instead of using Web UI. 
 
-Initially we used the [Openstack Job Builder](http://ci.openstack.org/jenkins-job-builder/), which allows us to create a Jenkins job configuration in YAML. Maintaing job configuration in YAML is huge step forward in comparsion to using a Web interface, however we soon discovered that YAML also had several limitations. It lacks both composition and abstraction . There is no way to reuse a chunk of YAML or compose many small YAML files into a single one. This causes tedious repetitive work and maintenance issues. 
+Initially we used the [Openstack Job Builder](http://ci.openstack.org/jenkins-job-builder/), which allows us to create a Jenkins job configuration in YAML. Maintaining job configuration in YAML is huge step forward in comparsion to using a Web interface, however we soon discovered that YAML also had several limitations. It lacks both composition and abstraction. There is no way to reuse a chunk of YAML or compose many small YAML files into a single one, which causes tedious repetitive work and maintenance issues.
 
 This is driving factor for the birth of Ruby Job Builder DSL.
 
