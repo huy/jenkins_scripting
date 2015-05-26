@@ -1,12 +1,12 @@
 ## Ruby Job Builder DSL
 
-At Wonga we have complex continous integration (CI) systems which we use to build, propogate and release code to our testing and production environments. We employ Jenkins to build SOAP components and run different test suites as part of this CI process. Wonga devops team follows infrastructure as code paradigm, which literally means write code to automate instrastructure tasks. As such we want to write code to create Jenkins jobs instead of using Web UI. 
+At Wonga we have complex continous integration (CI) systems which we use to build, propogate and release code to our testing and production environments. We employ Jenkins to build SOAP components and run different test suites as part of this CI process. The Wonga DevOps team adhears to the principles of "Infrastructure as Code", or programmable infrastructure, which means writing code (which can be done using a high level language or any descriptive language) to manage configurations and automate provisioning of infrastructure in addition to deployments. 
 
 Initially we used the [Openstack Job Builder](http://ci.openstack.org/jenkins-job-builder/), which allows us to create a Jenkins job configuration in YAML. Maintaining job configuration in YAML is huge step forward in comparsion to using a Web interface, however we soon discovered that YAML also had several limitations. It lacks both composition and abstraction. There is no way to reuse a chunk of YAML or compose many small YAML files into a single one, which causes tedious repetitive work and maintenance issues.
 
 This is driving factor for the birth of Ruby Job Builder DSL.
 
-Ruby Jobs Builder DSL is designed as a Ruby internal DSL, so it offers a fully fledged programming experience and at the same time concise, focused vocabularies for job creation. It generates XML job configuration files and deploys those configurations directly on to the designated Jenkins instance. The library is easy to use and has minimal dependencies. 
+Ruby Jobs Builder DSL is designed as a Ruby internal DSL, so it offers a mature programming experience and at the same time concise, focused vocabularies for job creation. It generates XML job configuration files and deploys those configurations directly on to the designated Jenkins instance. The library is easy to use and has minimal dependencies. 
 
 **Hello World Job**
 
@@ -33,7 +33,7 @@ Step 2 - Deploy it
     $ ruby hello_world.rb --deploy --config-file=localhost.ini
     deploying hello-world
 
-Ruby Jobs Builder DSL is extensively used within Wonga. Its DSL supports a handful of plugins that meet the need of different teams. It is used to create anything from simple individual jobs up to the most complex pipeline involving hundreds of jobs.
+Ruby Jobs Builder DSL is extensively used within Wonga. Its DSL supports a handful of plugins that meet the needs of different engineering teams within the organisation. It is used to create anything from simple individual jobs up to the most complex pipeline involving hundreds of jobs for teams.
 
 **Flexibility**
 
@@ -54,7 +54,7 @@ Ruby Jobs Builder DSL quite easy to extend, in Wonga we build other librarys on 
     
     JenkinsJob::Deployer.new(builder).run
 
-Ruby Jobs Builder DSL goes beyond job's creation, it can delete a job, wipe out workspace, trigger a build or even run a given groovy script on Jenkins server. This allows us to have a script that not only create jobs but also configure Jenkins as well as perform other administrative activities bringing automation to a new level.
+Ruby Jobs Builder DSL goes beyond job's creation, it can delete a job, wipe out workspace, trigger a build or even run a given groovy script on a Jenkins server. This allows us to have a script that not only creates jobs but also can configure a Jenkins instance as well as perform other administrative activities, helping us to bring automation to a new level.
 
     $ cat hello_mars.rb
     require 'rubyjobbuilderdsl'
